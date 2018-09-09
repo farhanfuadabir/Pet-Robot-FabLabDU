@@ -10,33 +10,33 @@ cap = cv.VideoCapture(0)
 ret, frame = cap.read()
 
 # frame = cv.imread('test.jpg')
-frame = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
-roi = cv.selectROI(frame, False)
-x = roi[0]
-y = roi[1]
-w = roi[2]
-h = roi[3]
-frame = frame[x:x+w, y:y+h]
-
-print(frame)
-
-hm = frame[:,:,0].mean()
-sm = frame[:,:,1].mean()
-vm = frame[:,:,2].mean()
-
-print(hm)
-hue_l = hm - 10;
-hue_h = hm + 10;
-
-sat_l = sm - 50;
-sat_h = sm + 50;
-
-val_l = vm - 50;
-val_h = vm + 50;
-
-lower = (hue_l, 170, 100)
-upper = (hue_h, 255, 255)
-print(frame[:,:,0].mean(), frame[:,:,1].mean(), frame[:,:,2].mean())
+# frame = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
+# roi = cv.selectROI(frame, False)
+# x = roi[0]
+# y = roi[1]
+# w = roi[2]
+# h = roi[3]
+# frame = frame[x:x+w, y:y+h]
+#
+# print(frame)
+#
+# hm = frame[:,:,0].mean()
+# sm = frame[:,:,1].mean()
+# vm = frame[:,:,2].mean()
+#
+# print(hm)
+# hue_l = hm - 10;
+# hue_h = hm + 10;
+#
+# sat_l = sm - 50;
+# sat_h = sm + 50;
+#
+# val_l = vm - 50;
+# val_h = vm + 50;
+#
+# lower = (hue_l, 170, 100)
+# upper = (hue_h, 255, 255)
+# print(frame[:,:,0].mean(), frame[:,:,1].mean(), frame[:,:,2].mean())
 
 while True:
     ret, frame = cap.read()

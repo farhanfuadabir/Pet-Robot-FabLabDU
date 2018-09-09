@@ -27,7 +27,7 @@ def on_message(client, userdata, msg):
 
     elif command == "l":
         left()
-        
+
     elif command == "h":
         halt()
 
@@ -37,13 +37,13 @@ def forward():
     GPIO.output(23, True)
     GPIO.output(25, False)
 
-def left():
+def right():
     GPIO.output(11, True)
     GPIO.output(13, False)
     GPIO.output(23, False)
     GPIO.output(25, True)
 
-def right():
+def left():
     GPIO.output(11, False)
     GPIO.output(13, True)
     GPIO.output(23, True)
