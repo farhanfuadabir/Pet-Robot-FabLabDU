@@ -9,6 +9,10 @@ GPIO.setup(11, GPIO.OUT)
 GPIO.setup(13, GPIO.OUT)
 GPIO.setup(23, GPIO.OUT)
 GPIO.setup(25, GPIO.OUT)
+GPIO.setup(12, GPIO.OUT)
+
+p = GPIO.PWM(12, 100)
+p.start(0)
 
 command = "h"
 
@@ -28,28 +32,35 @@ def on_message(client, userdata, msg):
     elif command == "l":
         left()
 
+    elif command == "b"
+        reverse()
+
     elif command == "h":
         halt()
 
 def forward():
+    p.ChangeDutyCycle(25)
     GPIO.output(11, True)
     GPIO.output(13, False)
     GPIO.output(23, True)
     GPIO.output(25, False)
 
 def right():
+    p.ChangeDutyCycle(25)
     GPIO.output(11, True)
     GPIO.output(13, False)
     GPIO.output(23, False)
     GPIO.output(25, True)
 
 def left():
+    p.ChangeDutyCycle(25)
     GPIO.output(11, False)
     GPIO.output(13, True)
     GPIO.output(23, True)
     GPIO.output(25, False)
 
 def halt():
+    p.ChangeDutyCycle(25)
     GPIO.output(11, False)
     GPIO.output(13, False)
     GPIO.output(23, False)

@@ -38,6 +38,9 @@ ret, frame = cap.read()
 # upper = (hue_h, 255, 255)
 # print(frame[:,:,0].mean(), frame[:,:,1].mean(), frame[:,:,2].mean())
 
+lower = (10, 170, 100)
+upper = (20, 255, 255)
+
 while True:
     ret, frame = cap.read()
     if not ret:
