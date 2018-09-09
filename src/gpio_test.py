@@ -1,4 +1,4 @@
-import Rpi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time as tm
 
 GPIO.setwarnings(False)
@@ -11,4 +11,4 @@ while(True):
      GPIO.output(37, False)
      tm.sleep(1)
 
- GPIO.cleanup()
+GPIO.cleanup()
