@@ -8,47 +8,47 @@ GPIO.setmode(GPIO.BOARD)
 
 GPIO.setup(11, GPIO.OUT)
 GPIO.setup(13, GPIO.OUT)
-GPIO.setup(23, GPIO.OUT)
-GPIO.setup(25, GPIO.OUT)
-GPIO.setup(12, GPIO.OUT)
+GPIO.setup(16, GPIO.OUT)
+GPIO.setup(18, GPIO.OUT)
+GPIO.setup(32, GPIO.OUT)
 
-p = GPIO.PWM(12, 100)
+p = GPIO.PWM(32, 100)
 p.start(0)
 
 def forward():
     p.ChangeDutyCycle(25)
     GPIO.output(11, True)
     GPIO.output(13, False)
-    GPIO.output(23, True)
-    GPIO.output(25, False)
+    GPIO.output(16, True)
+    GPIO.output(18, False)
 
 def right():
-    p.ChangeDutyCycle(25)
+    p.ChangeDutyCycle(15)
     GPIO.output(11, True)
     GPIO.output(13, False)
-    GPIO.output(23, False)
-    GPIO.output(25, True)
+    GPIO.output(16, False)
+    GPIO.output(18, True)
 
 def left():
-    p.ChangeDutyCycle(25)
+    p.ChangeDutyCycle(15)
     GPIO.output(11, False)
     GPIO.output(13, True)
-    GPIO.output(23, True)
-    GPIO.output(25, False)
+    GPIO.output(16, True)
+    GPIO.output(18, False)
 
 def halt():
     p.ChangeDutyCycle(25)
     GPIO.output(11, False)
     GPIO.output(13, False)
-    GPIO.output(23, False)
-    GPIO.output(25, False)
+    GPIO.output(16, False)
+    GPIO.output(18, False)
 
 font = cv.FONT_HERSHEY_SIMPLEX
 
 lower = (10, 170, 100)
 upper = (20, 255, 255)
 
-cap = cv.VideoCapture(0)
+cap = cv.VideoCapture(1)
 ret, frame = cap.read()
 
 while True:
@@ -78,15 +78,17 @@ while True:
 
             if dx > 0:
                 cv.putText(frame, "Angle : " + str(theta) + "deg left", center, font, 0.5, (255,255,255), 2)
-                right()
+                if theta > 15:
+                   right()
             else:
                 cv.putText(frame, "Angle : " + str(theta) + "deg right", center, font, 0.5, (255,255,255), 2)
-                left()
+                if theta > 15:
+                   left()
 
             dist = float("{0:.2f}".format(dist))
             cv.putText(frame, "Distance : " + str(dist) + "m", (center[0], center[1] - 20), font, 0.5, (255,255,255), 2)
 
-    cv.imshow("Frame", frame)
+    #cv.imshow("Frame", frame)
 
     k = cv.waitKey(30) & 0xFF
     if k == 27:
