@@ -1,13 +1,12 @@
 import cv2 as cv
 import numpy as np
+import threading
 
 font = cv.FONT_HERSHEY_SIMPLEX
+cap = cv.VideoCapture(0)
 
 lower = (10, 170, 100)
 upper = (20, 255, 255)
-
-cap = cv.VideoCapture(0)
-ret, frame = cap.read()
 
 # frame = cv.imread('test.jpg')
 # frame = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
@@ -43,8 +42,11 @@ upper = (20, 255, 255)
 
 while True:
     ret, frame = cap.read()
+
     if not ret:
         break
+
+    frame = cv.resize(frame, (240, 144), interpolation = cv.INTER_LINEAR)
 
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
     mask = cv.inRange(hsv, lower, upper)
@@ -65,7 +67,7 @@ while True:
             s = abs(dx)*0.001648*dist
             theta = (180 * np.arctan(s/dist)) / 3.14
             theta = float("{0:.2f}".format(theta))
-
+            print(theta)
             if dx > 0:
                 cv.putText(frame, "Angle : " + str(theta) + "deg left", center, font, 0.5, (255,255,255), 2)
             else:
