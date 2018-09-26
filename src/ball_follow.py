@@ -48,7 +48,7 @@ font = cv.FONT_HERSHEY_SIMPLEX
 lower = (10, 170, 100)
 upper = (20, 255, 255)
 
-cap = cv.VideoCapture(1)
+cap = cv.VideoCapture(4)
 ret, frame = cap.read()
 
 while True:
