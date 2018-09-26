@@ -56,6 +56,8 @@ while True:
     if not ret:
         break
 
+    frame = cv.resize(frame, (240, 144), interpolation = cv.INTER_LINEAR)
+
     hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
     mask = cv.inRange(hsv, lower, upper)
     cnts = cv.findContours(mask.copy(), cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)[-2]
