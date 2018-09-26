@@ -70,29 +70,32 @@ while True:
         if M["m00"] != 0:
             center = (int(M["m10"] / M["m00"]), int(M["m01"] / M["m00"]))
         if radius > 10:
-            cv.circle(frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
-            cv.circle(frame, center, 5, (0, 0, 255), -1)
-            dist = (0.25*140) / (radius*2)
-            dx = (x + radius) - 320
+            #cv.circle(frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
+            #cv.circle(frame, center, 5, (0, 0, 255), -1)
+            #dist = (0.25*140) / (radius*2)
+            dist = (0.25*52.5) / (radius*2)
+
+            dx = x - 120
             s = abs(dx)*0.001648*dist
             theta = (180 * np.arctan(s/dist)) / 3.14
             theta = float("{0:.2f}".format(theta))
+            print(theta)
 
             if dx > 0:
-                cv.putText(frame, "Angle : " + str(theta) + "deg left", center, font, 0.5, (255,255,255), 2)
+                #cv.putText(frame, "Angle : " + str(theta) + "deg left", center, font, 0.5, (255,255,255), 2)
                 if theta > 15:
                    right()
-                   print("right");
+                   #print("right");
             else:
-                cv.putText(frame, "Angle : " + str(theta) + "deg right", center, font, 0.5, (255,255,255), 2)
+                #cv.putText(frame, "Angle : " + str(theta) + "deg right", center, font, 0.5, (255,255,255), 2)
                 if theta > 15:
                    left()
-                   print("left");
+                   #print("left");
 
             # dist = float("{0:.2f}".format(dist))
             # cv.putText(frame, "Distance : " + str(dist) + "m", (center[0], center[1] - 20), font, 0.5, (255,255,255), 2)
 
-    cv.imshow("Frame", frame)
+    #cv.imshow("Frame", frame)
 
     k = cv.waitKey(30) & 0xFF
     if k == 27:
