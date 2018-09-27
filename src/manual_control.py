@@ -16,12 +16,14 @@ p.start(0)
 
 command = "h"
 
+ip = input("Enter Broker IP :")
+
 def on_connect(client, userdata, flags, rc):
-#    print("Connected with result code "+str(rc))
+    print("Connected with result code "+str(rc))
     client.subscribe("mqtt/command")
 
 def on_message(client, userdata, msg):
-#    print(msg.topic+" "+str(msg.payload))
+    print(msg.topic+" "+str(msg.payload))
     command = str(msg.payload)
     if command == "f":
         forward()
@@ -79,6 +81,6 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect("192.168.1.113", 1883, 60)
+client.connect(ip, 1883, 60)
 
 client.loop_forever()
