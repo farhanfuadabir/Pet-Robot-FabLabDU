@@ -3,7 +3,7 @@ import numpy as np
 import threading
 
 font = cv.FONT_HERSHEY_SIMPLEX
-cap = cv.VideoCapture(1)
+cap = cv.VideoCapture(0)
 
 lower = (10, 170, 100)
 upper = (20, 255, 255)
@@ -34,7 +34,7 @@ while True:
             cv.circle(frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
             cv.circle(frame, center, 5, (0, 0, 255), -1)
             dist = (0.25*140) / (radius*2)
-            dx = (x + radius) - 320
+            dx = (x + radius) - 120
             s = abs(dx)*0.001648*dist
             theta = (180 * np.arctan(s/dist)) / 3.14
             theta = float("{0:.2f}".format(theta))
