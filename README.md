@@ -10,8 +10,8 @@ This project was aiming to build a a four-wheeler companion bot which can follow
 ## Image
 Terminals and the control box:
 <p align="center">
-<img src="Petrobot_1.jpg" width="450">
-<img src="Petrobot_2.jpg" width="450">
+<img src="Petrobot_1.jpg" width="350">
+<img src="Petrobot_2.jpg" width="350">
 </p>
 
 
